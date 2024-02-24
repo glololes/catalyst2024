@@ -39,9 +39,9 @@ function check(){
         mindMaps++;
     }
 
-    if(question5 == write){
+    if(question5 == "write"){
         pomodoroEffect++;
-    } else if(question5 == spell){
+    } else if(question5 == "spell"){
         mozart++;
     }else{
         mindMaps++;
@@ -92,19 +92,15 @@ function check(){
 
 	if (mozart > feynam && mozart > mindMaps && mozart > pomodoroEffect) {
 		score = 0;
-	}
-
-	if (mindMaps > mozart && mindMaps > feynam && mindMaps > pomodoroEffect) {
+	}else if (mindMaps > mozart && mindMaps > feynam && mindMaps > pomodoroEffect) {
 		score = 1;
-	}
-
-	if (pomodoroEffect > feynam && pomodoroEffect > mindMaps && pomodoroEffect > mozart){
+	} else if (pomodoroEffect > feynam && pomodoroEffect > mindMaps && pomodoroEffect > mozart){
 		score = 2;
-	}
-
-    if (feynam > mozart && feynam > mindMaps && feynam > pomodoroEffect) {
+	} else if (feynam > mozart && feynam > mindMaps && feynam > pomodoroEffect) {
 		score = 3;
-	}
+	} else {
+        score = 1;
+    }
 
 	document.getElementById("after_submit").style.visibility = "visible";
 	document.getElementById("message").innerHTML = messages[score];
