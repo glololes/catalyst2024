@@ -86,20 +86,24 @@ function check(){
         mozart++;
     }
 	
-	var pictures = ["img/win.gif", "img/meh.jpeg", "img/lose.gif"];
+	var pictures = ["mozart.jpg", "mind.jpg", "pomodoro.jpg", "feynam.jpg"];
 	var messages = ["Great job!", "That's just okay", "You really need to do better"];
 	var score;
 
-	if (correct == 0) {
-		score = 2;
+	if (mozart > && ) {
+		score = 0;
 	}
 
-	if (correct > 0 && correct < 3) {
+	if (mindMaps > mozart && mindMaps > feynam && ) {
 		score = 1;
 	}
 
-	if (correct == 3) {
-		score = 0;
+	if (pomodoroEffect > feynam && pomodoroEffect > mindMaps && pomodoroEffect > mozart){
+		score = 2;
+	}
+
+    if (feynam > mozart && feynam > mindMaps && feynam > pomodoroEffect) {
+		score = 3;
 	}
 
 	document.getElementById("after_submit").style.visibility = "visible";
