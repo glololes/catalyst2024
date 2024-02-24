@@ -86,7 +86,7 @@ function check(){
         mozart++;
     }
 	
-	var pictures = ["mozart.jpg", "mind.jpg", "pomodoro.jpg", "feynam.jpg"];
+	var pictures = ["images/mozart.jpg", "images/mind.jpg", "images/pomodoro.jpg", "images/feynam.jpg"];
 	var messages = ["Mozart Techniqye works best for you!", "Mind Maps can help your creativity flow", "Pomodoro Technique. Study 20 minutes and take a break fro 5!", "Feyman technique, you know how to explain!"];
 	var score;
 
