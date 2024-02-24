@@ -90,11 +90,11 @@ function check(){
 	var messages = ["Great job!", "That's just okay", "You really need to do better"];
 	var score;
 
-	if (mozart > && ) {
+	if (mozart > feynam && mozart > mindMaps && mozart > pomodoroEffect) {
 		score = 0;
 	}
 
-	if (mindMaps > mozart && mindMaps > feynam && ) {
+	if (mindMaps > mozart && mindMaps > feynam && mindMaps > pomodoroEffect) {
 		score = 1;
 	}
 
