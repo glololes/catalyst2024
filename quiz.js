@@ -87,7 +87,7 @@ function check(){
     }
 	
 	var pictures = ["mozart.jpg", "mind.jpg", "pomodoro.jpg", "feynam.jpg"];
-	var messages = ["Great job!", "That's just okay", "You really need to do better"];
+	var messages = ["Mozart Techniqye works best for you!", "Mind Maps can help your creativity flow", "Pomodoro Technique. Study 20 minutes and take a break fro 5!", "Feyman technique, you know how to explain!"];
 	var score;
 
 	if (mozart > feynam && mozart > mindMaps && mozart > pomodoroEffect) {
