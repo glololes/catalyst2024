@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            perspective: 1000px;
+            position: relative;
+        }
+        .card-container {
+            width: 300px; /* Adjust width as needed */
+            height: 200px; /* Adjust height as needed */
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        .card-container.flipped {
+            transform: rotateY(180deg);
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .back {
+            background-color: #f2f2f2;
+            transform: rotateY(180deg);
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .arrow.left {
+            left: -30px;
+        }
+        .arrow.right {
+            right: -30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card-container" onclick="flipCard(this)">
+            <div class="card front">
+                Front of the card
+            </div>
+            <div class="card back">
+                Back of the card
+            </div>
+        </div>
+        <div class="arrow left" onclick="prevCard()">&#10094;</div>
+        <div class="arrow right" onclick="nextCard()">&#10095;</div>
+    </div>
+
+    <script>
+        let frontface = [
+            "front1",
+            "front2",
+            "front3",
+        ];
+
+        let backface = [
+            "back1",
+            "back2",
+            "back3",
+        ];
+
+        let currentCardIndex = 0;
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+        
+        function showCard(index) {
+            const frontCard = document.querySelector('.card.front');
+            const backCard = document.querySelector('.card.back');
+            frontCard.textContent = frontface[index];
+            backCard.textContent = backface[index];
+        }
+
+        function nextCard() {
+            currentCardIndex++;
+            if (currentCardIndex >= frontface.length) {
+                currentCardIndex = 0;
+            }
+            showCard(currentCardIndex);
+            document.querySelector('.card-container').classList.remove('flipped');
+        }
+
+        function prevCard() {
+            currentCardIndex--;
+            if (currentCardIndex < 0) {
+                currentCardIndex = frontface.length - 1;
+            }
+    
+            showCard(currentCardIndex);
+            document.querySelector('.card-container').classList.remove('flipped');
+        }
+
+        showCard(currentCardIndex);
+    </script>
+</body>
+</html>
