@@ -1,46 +1,90 @@
-/* Resetting default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
+html, body {
+    min-height: 100%;
     display: flex;
-    justify-content: center;
-    background: #f4f4f4;
-    padding: 1rem;
-}
-
-nav ul li {
-    margin: 0 1rem;
-}
-
-nav ul li a {
+    flex-direction: column;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  
+  body {
+    font-family: 'Lato', sans-serif;
+    background-image: url('https://content.codecademy.com/projects/make-a-website/lesson-3/background.jpg');
+    background-position: center top;
+    background-size: cover;
+    margin: 0;
+  }
+  
+  a {
+    color: #204156;
     text-decoration: none;
-    color: #333;
-}
-
-main {
-    padding: 2rem;
-}
-
-footer {
-    background: #333;
-    color: #fff;
+  }
+  
+  .page-title {
     text-align: center;
-    padding: 1rem;
-}
+    font-weight: 100;
+  }
+  
+  .page-description {
+    border: 1px solid #000;
+    margin: 2px;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .gallery {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gallery-item {
+    margin: 20px;
+  }
+  
+  .gallery-item .thumbnail {
+    border: 5px solid #fff;
+  }
+  
+  nav {
+    background-color: #FFF;
+  }
+  
+  nav li {
+    display: inline;
+    margin: 0;
+    margin-right: 150px;
+    padding: 0 10px;
+    text-align: center;
+  }
+  
+  nav ul {
+    margin-left: 30px;
+    padding: 8px 18px;
+    display: inline;
+  }
+  
+  .contact-btn {
+    float: right;
+  }
+  
+  .contact-btn a {
+    cursor: pointer;
+    margin-right: 30px;
+    padding: 8px 18px;
+    border: 1px solid #204156;
+    position: relative;
+  }
+  
+  .contact-btn a:active {
+    top: 2px;
+  }
+  
+  nav a {
+    height: 60px;
+    line-height: 60px;
+    color: #204156;
+    text-decoration: none;
+  }
+  
+  
