@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { ChatGPT } = require('openai'); // Assuming you have the OpenAI library installed
+const { ChatGPT } = require('openai');
 
 const app = express();
-const port = 3000; // You can change the port if needed
+const port = 3000;
 
 // Initialize ChatGPT with your API key
 const chatGPT = new ChatGPT({
