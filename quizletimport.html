@@ -14,14 +14,15 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            font-size: 20px;
         }
         .container {
             perspective: 1000px;
             position: relative;
         }
         .card-container {
-            width: 300px; /* Adjust width as needed */
-            height: 200px; /* Adjust height as needed */
+            width: 400px; 
+            height: 300px; 
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.5s;
@@ -38,10 +39,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
+            font-size: 28px;
+            border: 2px solid #ccc; 
+            border-radius: 16px; 
+            padding: 30px; 
             box-sizing: border-box;
         }
         .back {
@@ -51,15 +52,25 @@
         .arrow {
             position: absolute;
             top: 50%;
+
             transform: translateY(-50%);
-            font-size: 24px;
+            font-size: 32px; 
             cursor: pointer;
+            color: #333;
         }
         .arrow.left {
-            left: -30px;
+            left: -40px; 
         }
         .arrow.right {
-            right: -30px;
+            right: -40px; 
+        }
+        .flashcard-count {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #666;
         }
     </style>
 </head>
@@ -73,8 +84,15 @@
                 Back of the card
             </div>
         </div>
-        <div class="arrow left" onclick="prevCard()">&#10094;</div>
-        <div class="arrow right" onclick="nextCard()">&#10095;</div>
+        <div class="arrow left" onclick="prevCard()">
+            &#10094;
+        </div>
+        <div class="arrow right" onclick="nextCard()">
+            &#10095;
+        </div>
+        <div class="flashcard-count" id="flashcardCount">
+            Flashcard 1 of 3
+        </div>
     </div>
 
     <script>
@@ -100,7 +118,8 @@
             const frontCard = document.querySelector('.card.front');
             const backCard = document.querySelector('.card.back');
             frontCard.textContent = frontface[index];
-            backCard.textContent = backface[index];
+            const flashcardCount = document.getElementById('flashcardCount');
+            flashcardCount.textContent = `${index+1}/${frontface.length}`;
         }
 
         function nextCard() {
@@ -117,7 +136,6 @@
             if (currentCardIndex < 0) {
                 currentCardIndex = frontface.length - 1;
             }
-    
             showCard(currentCardIndex);
             document.querySelector('.card-container').classList.remove('flipped');
         }
