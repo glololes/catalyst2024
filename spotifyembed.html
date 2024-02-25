@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embed Spotify Link</title>
+</head>
+<body>
+
+<h2>Embed Spotify Link</h2>
+
+<form id="spotify-form">
+  <label for="spotify-link">Enter Spotify Track Link:</label><br>
+  <input type="text" id="spotify-link" name="spotify-link"><br><br>
+  <button type="button" onclick="embedSpotify()">Embed</button>
+</form>
+
+<div id="embed-container"></div>
+
+<script>
+function embedSpotify() {
+    var spotifyLink = document.getElementById("spotify-link").value;
+    var embedContainer = document.getElementById("embed-container");
+
+    // Regular expression to extract the track ID from the Spotify link
+    var trackIdRegex = /track\/([a-zA-Z0-9]+)/;
+    var match = spotifyLink.match(trackIdRegex);
+
+    if (match && match.length > 1) {
+        var trackId = match[1];
+        var iframeCode = `
+            <iframe src="https://open.spotify.com/embed/track/${trackId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        `;
+        embedContainer.innerHTML = iframeCode;
+    } else {
+        embedContainer.innerHTML = "<p>Please enter a valid Spotify track link.</p>";
+    }
+}
+</script>
+
+</body>
+</html>

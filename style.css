@@ -40,6 +40,7 @@ html, body {
     margin-left: 20px;
     margin-right: 20px;
     text-align: center;
+    justify-content: center;
   }
   
   .gallery-item {
@@ -47,10 +48,10 @@ html, body {
   }
   
   .gallery-item .thumbnail {
-    display:flex;
     border: 5px solid #f18b9c;
-    width: 50%;
-    height: 50%;
+    max-width: 500px;
+    max-height: auto;
+    justify-content: center;
   }
   
   nav {
