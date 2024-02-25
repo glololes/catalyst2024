@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "qimport.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quizlet Learn</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .quiz-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+    .options {
+        list-style-type: none;
+        padding: 0;
+    }
+    .option {
+        margin-bottom: 5px;
+    }
+    .option input[type="radio"] {
+        margin-right: 5px;
+    }
+    .mainbutton {
+            position: absolute;
+            top: 30px;
+        }
+
+        .modal-background {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px; 
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            border-radius: 10px;
+            position: relative; 
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+        }
+        .text-input {
+            width: calc(100% - 22px); 
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .submit-button {
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    
+</style>
+</head>
+<body>
+<button class="mainbutton" onclick="openModal()">Upload from Quizlet</button>
+
+<div id="popup" class="modal-background">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <textarea class="text-input" id="textInput" placeholder="Paste your text here..."></textarea>
+        <button onclick="submitText()">Submit</button>
+    </div>
+</div>
+<div class="quiz-container" id="quiz-container"></div>
+
+<script>
+function generateQuiz(questions) {
+    let quiz = "";
+    questions.forEach((question, index) => {
+        let options = question.options.map((option, idx) => {
+            return `
+                <li class="option">
+                    <input type="radio" id="q${index}_option${idx}" name="q${index}" value="${option}">
+                    <label for="q${index}_option${idx}">${option}</label>
+                </li>
+            `;
+        }).join('');
+
+        quiz += `
+            <div class="question">
+                <h3>Question ${index + 1}</h3>
+                <p><strong>Term:</strong> ${question.term}</p>
+                <ul class="options">
+                    ${options}
+                </ul>
+                <button onclick="checkAnswer(${index})">Check Answer</button>
+                <p id="result_${index}"></p>
+            </div>
+        `;
+    });
+    return quiz;
+}
+
+function checkAnswer(questionIndex) {
+    let selectedOption = document.querySelector(`input[name="q${questionIndex}"]:checked`);
+    if (!selectedOption) {
+        alert("Please select an option!");
+        return;
+    }
+    let resultDiv = document.getElementById(`result_${questionIndex}`);
+    if (selectedOption.value === questions[questionIndex].correctAnswer) {
+        resultDiv.textContent = "Correct!";
+    } else {
+        resultDiv.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].correctAnswer;
+    }
+}
+
+// Example usage
+let questions = [];
+function createQuestions() {
+for (let i = 0; i < frontface.length; i++){
+    let randInt = Math.floor(Math.random() * 4);
+    let other1 = null;
+    let other2 = null;
+    let other3 = null;
+    let size = frontface.length;
+    while ((other1 == null) || (other1 == i)) {
+        other1 = Math.floor(Math.random() * size);
+    }
+    while ((other2 == null) || (other2 == i) || (other2 == other1)) {
+        other2 = Math.floor(Math.random() * size);
+    }
+    while ((other3 == null) || (other3 == i) || (other3 == other1) || (other3 == other2)) {
+        other3 = Math.floor(Math.random() * size);
+    }
+    if (randInt == 0)
+        questions.push({
+            term: frontface[i],
+            options: [backface[i], backface[other1], backface[other2], backface[other3]],
+            correctAnswer: backface[i]
+        });
+    else if (randInt == 1)
+        questions.push({
+            term: frontface[i],
+            options: [backface[other1], backface[i], backface[other2], backface[other3]],
+            correctAnswer: backface[i]
+        });
+    else if (randInt == 2)
+        questions.push({
+            term: frontface[i],
+            options: [backface[other1], backface[other2], backface[i], backface[other3]],
+            correctAnswer: backface[i]
+        });
+    else 
+        questions.push({
+            term: frontface[i],
+            options: [backface[other1], backface[other2], backface[other3], backface[i]],
+            correctAnswer: backface[i]
+        });
+}};
+createQuestions();
+let quizContainer = document.getElementById("quiz-container");
+quizContainer.innerHTML = generateQuiz(questions);
+</script>
+
+</body>
+</html>
