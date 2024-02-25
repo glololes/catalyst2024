@@ -1,0 +1,16 @@
+{
+  "name": "hacktj24",
+  "version": "1.0.0",
+  "description": "HackTJ 2024 project at cvent",
+  "main": "aiBOT.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.28.0"
+  }
+}
