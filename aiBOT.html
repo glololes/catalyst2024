@@ -50,14 +50,32 @@ function appendMessage(sender, message) {
 
 function getAnswer(question) {
     switch (question.toLowerCase()) {
-        case 'what is the capital of France?':
-            return 'The capital of France is Paris.';
-        case 'how do I study effectively?':
-            return 'To study effectively, make a schedule, break tasks into smaller chunks, take regular breaks, and practice active learning techniques.';
-        default:
-            return 'I am sorry, I dont understand your question.';
+        askQuestion()
     }
 }
+
+function askQuestion() {
+    var question = document.getElementById('input').value;
+    if (question.trim() === '') return;
+
+    appendMessage('You', question);
+
+    fetch('/ask', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ question: question })
+    })
+    .then(response => response.json())
+    .then(data => {
+        appendMessage('Bot', data.answer);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 </script>
 
 </body>
