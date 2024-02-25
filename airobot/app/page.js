@@ -9,7 +9,7 @@ export default function Home() {
   const messageRef = useRef();
 
   const [messages, setMessages] = useState([]);
-  const [displayMessage, setDisplayMessage] = useState("Hi there!");
+  const [displayMessage, setDisplayMessage] = useState("Ahoy there!");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -66,14 +66,14 @@ export default function Home() {
           }`}
         >
           <div className="absolute h-[15px] w-[15px] bg-blue-400 -right-[7px] top-[50%] rotate-45"></div>
-          <h3 className="text-2xl text-white bold">Botty Says:</h3>
+          <h3 className="text-2xl text-white bold">Geisha Says:</h3>
           <p className="text-white">
             {loading ? "[Botty is thinking]" : parse(marked(displayMessage))}
           </p>
         </div>
 
         <div>
-          <Image alt="Botty" src="/bot.png" width={512} height={512} />
+          <Image alt="Geisha" src="/bot.png" width={512} height={512} />
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export default function Home() {
             required
             type="text"
             ref={messageRef}
-            placeholder="Ask a question or say something nice."
+            placeholder="Ask your study questions!"
           />
         </div>
 
