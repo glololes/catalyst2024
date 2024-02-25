@@ -5,22 +5,19 @@ const { ChatGPT } = require('openai');
 const app = express();
 const port = 3000;
 
-// Initialize ChatGPT with your API key
 const chatGPT = new ChatGPT({
-    apiKey: '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'
+    apiKey: 'your-api-key-here' // Replace 'your-api-key-here'
 });
 
-// Middleware to parse JSON body
 app.use(bodyParser.json());
 
-// Endpoint to handle user questions
 app.post('/ask', async (req, res) => {
     const { question } = req.body;
     
     try {
-        // Call the ChatGPT API to generate a response
+    
         const response = await chatGPT.complete({
-            model: 'text-davinci-002',
+            model: 'text-davinci-003', 
             prompt: question,
             maxTokens: 150
         });
@@ -32,7 +29,6 @@ app.post('/ask', async (req, res) => {
     }
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
