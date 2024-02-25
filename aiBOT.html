@@ -1,64 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Chat</title>
-<style>
-    /* CSS for chatbox */
-    #chatbox {
-        width: 400px;
-        height: 600px;
-        border: 1px solid #efc5c5;
-        overflow-y: scroll;
-        padding: 10px;
-    }
-    #input {
-        width: 100%;
-        padding: 5px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next.js App</title>
 </head>
 <body>
-    <h1>Chat with Catalyst</h1>
-    <p>Use our AI implemented by using openAI's source and using various things such as...</p>
+    <div id="root"></div>
 
-<div id="chatbox"></div>
-<input type="text" id="input" placeholder="Type your question here...">
-<button onclick="askQuestion()">Ask!</button>
-
-<script>
-function askQuestion() {
-    var question = document.getElementById('input').value;
-    if (question.trim() === '') return;
-
-    appendMessage('You', question);
-    var answer = getAnswer(question);
-
-    setTimeout(function() {
-        appendMessage('Catalyst', answer);
-    }, 500);
-}
-
-function appendMessage(sender, message) {
-    var chatbox = document.getElementById('chatbox');
-    var messageElement = document.createElement('div');
-    messageElement.textContent = sender + ': ' + message;
-    chatbox.appendChild(messageElement);
-    chatbox.scrollTop = chatbox.scrollHeight;
-}
-
-function getAnswer(question) {
-    switch (question.toLowerCase()) {
-        case 'what is the capital of France?':
-            return 'The capital of France is Paris.';
-        case 'how do I study effectively?':
-            return 'To study effectively, make a schedule, break tasks into smaller chunks, take regular breaks, and practice active learning techniques.';
-        default:
-            return 'I am sorry, I dont understand your question.';
-    }
-}
-</script>
-
+    <script src="/path/to/your/nextjs/bundle.js"></script>
 </body>
 </html>
