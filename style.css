@@ -53,13 +53,13 @@ html, body {
   nav li {
     display: inline;
     margin: 0;
-    margin-right: 150px;
+    margin-right: 125px;
     padding: 0 10px;
     text-align: center;
   }
   
   nav ul {
-    margin-left: 30px;
+    margin-left: 49px;
     padding: 8px 18px;
     display: inline;
   }
