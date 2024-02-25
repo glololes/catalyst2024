@@ -8,7 +8,7 @@ let frontface = [
 let backface = [
     "Answer!",
     "Great job!",
-    "Just click the button above!",
+    "Just click the button below!",
     "What a great studying website for real!!"
 ];
 

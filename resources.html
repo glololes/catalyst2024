@@ -1,91 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Resources</title>
-<link href ="res_style.css" rel ="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<script src = "quiz.js"></script>
-
+    <title>Resources</title>
+    <link href="res_style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="quiz.js"></script>
 </head>
 
 <body>
-    <h1>Resources</h1>
-    <p>Even if Geisha can't help you study, you can use other study guides which can help you! For Example:</p>
-    <ul>
-        <li>Bio</li>
-        <li>Chem</li>
-        <li>Physics</li>
-      </ul>
-    <h3>Try out this quiz that can help you learn what studying technique is the best for you!</h3>
+    <h1 style="text-align: center;">Resources</h1>
+    <p style="text-align: center;">Even if Geisha can't help you study, you can use other study guides which can help you!
+    </p>
+    <h3 style="text-align: center;">Try out this quiz that can help you learn what studying technique is the best for you!</h3>
 
+    <form id="quiz" name="quiz" style="margin-left: 380px; width: 50%;">
+        <p class="questions">Do you listen to music while studying (yes or no)?</p>
+        <input id="textbox" type="text" name="question1">
 
-    <form id = "quiz" name = "quiz">
+        <p class="questions">Do you struggle focusing while studying for a long period of time?</p>
+        <input type="radio" id="mc" name="question2" value="yea"> Yes<br>
+        <input type="radio" id="mc" name="question2" value="nah"> No<br>
 
+        <p class="questions">What type of learner are you?</p>
 
-    <p class = "questions">Do you listen to music while studying(yes or no)?</p>
-    <input id = "textbox" type = "text" name = "question1">
+        <input type="radio" id="mc" name="question3" value="visual"> I work best with visual representation!<br>
+        <input type="radio" id="mc" name="question3" value="audio"> I work best listening!<br>
+        <input type="radio" id="mc" name="question3" value="talker"> When I can explain the topic myself!<br>
 
-    <p class = "questions">Do you struggle focusing for a long amount of time?</p>
-    <input type = "radio" id = "mc" name = "question2" value = "yea"> Yes<br>
-    <input type = "radio" id = "mc" name = "question2" value = "nah"> No<br>
+        <p class="questions">What kind of book would you like to read?</p>
 
-    <p class = "questions">What type of learner are you?</p>
+        <input type="radio" id="mc" name="question4" value="pics"> A book with lots of pictures!<br>
+        <input type="radio" id="mc" name="question4" value="words"> A book with lots of words in it!<br>
+        <input type="radio" id="mc" name="question4" value="puzzles"> A book with word puzzles and crosswords!<br>
 
-    <input type = "radio" id = "mc" name = "question3" value = "visual"> I work best with visual representation<br>
-    <input type = "radio" id = "mc" name = "question3" value = "audio"> I work best listening<br>
-    <input type = "radio" id = "mc" name = "question3" value = "talker"> When I can explain the topic myself<br>
+        <p class="questions">When you are not sure on how to spell a word, what do you do?</p>
 
-    <p class = "questions">What kind of book would you like to read?</p>
+        <input type="radio" id="mc" name="question5" value="write"> Write it down to see if it looks right.<br>
+        <input type="radio" id="mc" name="question5" value="spell"> Spell it out loud to see if it sounds right.<br>
+        <input type="radio" id="mc" name="question5" value="trace"> Trace the letters in the air (finger spelling).<br>
 
-    <input type = "radio" id = "mc" name = "question4" value = "pics"> A book with lots of pictures<br>
-    <input type = "radio" id = "mc" name = "question4" value = "words"> A book with lots of words in it<br>
-    <input type = "radio" id = "mc" name = "question4" value = "puzzles"> A book with word puzzles and crosswords<br>
+        <p class="questions">You're out shopping for clothes, and you're waiting in line to pay. What are you most likely to do while you are waiting?</p>
 
-    <p class = "questions">When you are not sure on how to spell a word, what do you do?</p>
+        <input type="radio" id="mc" name="question6" value="look"> Look around at other clothes on the racks.<br>
+        <input type="radio" id="mc" name="question6" value="talk"> Talk to the person next to you in line.<br>
+        <input type="radio" id="mc" name="question6" value="fidget"> Fidget or move back and forth.<br>
 
-    <input type = "radio" id = "mc" name = "question5" value = "write"> Write it down to see if it looks right<br>
-    <input type = "radio" id = "mc" name = "question5" value = "spell"> Spell it out loud to see if it sounds right<br>
-    <input type = "radio" id = "mc" name = "question5" value = "trace"> Trace the letters in the air (finger spelling)<br>
+        <p class="questions">When you see the word "cat," what do you do first?</p>
 
-    <p class = "questions">You're out shopping for clothes, and you're waiting in line to pay. What are you most likely to do while you are waiting?</p>
+        <input type="radio" id="mc" name="question7" value="emily"> Picture a cat in your mind.<br>
+        <input type="radio" id="mc" name="question7" value="reb"> Say the word "cat" to yourself.<br>
+        <input type="radio" id="mc" name="question7" value="jess"> Think about being with a cat (petting it or hearing it purr).<br>
 
-    <input type = "radio" id = "mc" name = "question6" value = "look">  Look around at other clothes on the racks<br>
-    <input type = "radio" id = "mc" name = "question6" value = "talk"> Talk to the person next to you in line<br>
-    <input type = "radio" id = "mc" name = "question6" value = "fidget"> Fidget or move back and forth<br>
+        <p class="questions">When you are assigned a textbook reading, what best describes you?</p>
 
-    <p class = "questions">When you see the word "cat," what do you do first?</p>
+        <input type="radio" id="mc" name="question8" value="noRead"> Feel agitated, you don't want to read it!<br>
+        <input type="radio" id="mc" name="question8" value="distract"> You will be distracted by the reading.<br>
+        <input type="radio" id="mc" name="question8" value="music"> You like the reading, but you need music to focus.<br>
 
-    <input type = "radio" id = "mc" name = "question7" value = "emily">  Picture a cat in your mind<br>
-    <input type = "radio" id = "mc" name = "question7" value = "reb"> Say the word "cat" to yourself<br>
-    <input type = "radio" id = "mc" name = "question7" value = "jess"> Think about being with a cat (petting it or hearing it purr)<br>
+        <p class="questions">What's the best way for you to study for a test?</p>
 
-    <p class = "questions">When you are assigned a textbook reading, what best describes you?</p>
+        <input type="radio" id="mc" name="question9" value="reread"> Read the book or your notes and review pictures or charts.<br>
+        <input type="radio" id="mc" name="question9" value="ask"> Have someone ask you questions that you can answer out loud.<br>
+        <input type="radio" id="mc" name="question9" value="cards"> Create index cards that you can review.<br>
 
-    <input type = "radio" id = "mc" name = "question8" value = "noRead">  Feel agitated, you don't want to read it<br>
-    <input type = "radio" id = "mc" name = "question8" value = "distract"> You will be easily distracted by the reading<br>
-    <input type = "radio" id = "mc" name = "question8" value = "music"> You like the reading, but you need music to focus<br>
+        <p class="questions"> Do you think drawings are of good help to you when studying? (yes or no)</p>
 
-    <p class = "questions">What's the best way for you to study for a test?</p>
+        <input id="textbox" type="text" name="question10">
 
-    <input type = "radio" id = "mc" name = "question9" value = "reread">  Read the book or your notes and review pictures or charts<br>
-    <input type = "radio" id = "mc" name = "question9" value = "ask"> Have someone ask you questions that you can answer out loud<br>
-    <input type = "radio" id = "mc" name = "question9" value = "cards"> Make up index cards that you can review<br>
-
-    <p class = "questions"> Do you think drawings better represent you when studying?</p>
-
-    <input id = "textbox" type = "text" name = "question10">
-
-    <input id = "button" type = "button" value = "I'm finished!" onclick = "check();">
-
-
+        <input id="button" type="button" value="I'm finished!" onclick="check();">
     </form>
 
-    <div id = "after_submit">
-    <p id = "number_correct"></p>
-    <p id = "message"></p>
-    <img id = "picture">
+    <div id="after_submit" style="text-align: center; margin-left: 570px">
+        <p id="number_correct"></p>
+        <p id="message"></p>
+        <img id="picture">
     </div>
-
 </body>
 </html>

@@ -87,7 +87,11 @@ function check(){
     }
 	
 	var pictures = ["images/mozart.jpg", "images/mind.jpg", "images/pomodoro.jpg", "images/feynam.jpg"];
-	var messages = ["Mozart Techniqye works best for you!", "Mind Maps can help your creativity flow", "Pomodoro Technique. Study 20 minutes and take a break fro 5!", "Feyman technique, you know how to explain!"];
+	var messages = [
+    "The Mozart effect is a theory that listening to Mozart, or any classical music for that matter, improves focus. Music can help students perform better in high pressure situations and help relieve stress. It’s important to remember that this theory may not work for everyone, as some students perform better without music.", 
+    "Mind mapping is a useful technique that shows how different facts are related and enhances creative problem solving. It is a radical diagram that starts with the mainidea in the center and grows outwards with branching sub sections. Mind mapping helps our brains store important information more easily.", 
+    "The pomodoro technique is a time management method based on 25 minute stretches of focused work broken by 5 minute breaks. The goal of this technique is to keep yourself motivated and cut down on distractions. ", 
+    "The Feynman technique suggests choosing a concept or topic and teaching it to yourself or someone else. This technique encourages you to break down complex ideas using simple language. Teaching helps you engage deeply with the study material and identify holes in your understanding of the concept. "];
 	var score;
 
 	if (mozart > feynam && mozart > mindMaps && mozart > pomodoroEffect) {

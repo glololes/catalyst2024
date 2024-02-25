@@ -7,7 +7,7 @@ body {
 
 #quiz {
 	margin-left: 10px;
-	background: #eec4ea;
+	background: #f2b1bc;
 	padding: 10px 20px 10px 20px;
 	width: 400px;
 	border-radius: 20px;
@@ -32,11 +32,11 @@ input {
 
 
 #button {
-	background: #7a0e49;
+	background: #f18b9c;
 	border: none;
 	border-radius: 5px;
 	padding: 10px;
-	color: white;
+	color: rgb(0, 0, 0);
 	font-size: 16px;
 	transition-duration: .5s;
 	margin-top: 15px;
@@ -44,21 +44,21 @@ input {
 
 #button:hover {
 	background: white;
-	border: 1px solid #7a0e49;
-	color: black;
+	border: 1px solid #f18b9c;
+	color: #f18b9c;
 	cursor: pointer;
 
 }
 
 #after_submit {
 	visibility: hidden;
-	background: #ff5459;
+	background: #f18b9c;
 	padding: 10px 20px 10px 20px;
 	width: 400px;
 	border-radius: 20px;
 	float: left;
 	margin-left: 20px;
-	font-size: 30px;
+	font-size: 15px;
 
 
 }
