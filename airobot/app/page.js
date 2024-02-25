@@ -68,7 +68,7 @@ export default function Home() {
           <div className="absolute h-[15px] w-[15px] bg-blue-400 -right-[7px] top-[50%] rotate-45"></div>
           <h3 className="text-2xl text-white bold">Geisha Says:</h3>
           <p className="text-white">
-            {loading ? "[Botty is thinking]" : parse(marked(displayMessage))}
+            {loading ? "[Geisha is thinking]" : parse(marked(displayMessage))}
           </p>
         </div>
 
