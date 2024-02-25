@@ -20,6 +20,14 @@ html, body {
     text-decoration: none;
   }
   
+  .titlee {
+    width:100%;
+    text-align:center;
+  }
+  .titleee {
+    display:inline-block;
+    margin: 0 auto;
+  }
   .page-title {
     text-align: center;
     font-weight: 100;
@@ -93,10 +101,5 @@ html, body {
     line-height: 60px;
     color: #204156;
     text-decoration: none;
-  }
-  titlee{
-    height:250px;
-    width:250px;
-    margin-right:600px;
   }
   
