@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Timer</title>
+<style>
+    body {
+        font-family: 'Lato', sans-serif;
+        background-color: #ffc0cb;
+        text-align: center;
+    }
+    #timer {
+        font-family: 'Lato', sans-serif;
+        font-size: 48px;
+        margin-top: 50px;
+    }
+    button {
+        font-family: 'Lato', sans-serif;
+        background-color: #fcb6c1;
+        border: 2px solid #fdaab8;
+        font-size: 24px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    .options {
+        font-family: 'Lato', sans-serif;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>Pomodoro Timer</h1>
+<div id="timer">20:00</div>
+<div class="options">
+    <button onclick="setTimer(20, 'Pomodoro')">20 Min Pomodoro</button>
+    <button onclick="setTimer(5, 'Short Break')">5 Min Break</button>
+    <button onclick="setTimer(15, 'Long Break')">15 Min Break</button>
+</div>
+<button id="startBtn" disabled>Start</button>
+<button id="resetBtn">Reset</button>
+
+<script>
+    var timerDisplay = document.getElementById('timer');
+    var startBtn = document.getElementById('startBtn');
+    var resetBtn = document.getElementById('resetBtn');
+    var selectedTime = 20 * 60; // default to 20 minutes
+    var timer;
+
+    function displayTimeLeft(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainderSeconds = seconds % 60;
+        var display = `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+        timerDisplay.textContent = display;
+    }
+
+    function setTimer(duration, type) {
+        selectedTime = duration * 60;
+        displayTimeLeft(selectedTime);
+        resetBtn.click(); // Reset the timer
+        startBtn.disabled = false;
+        document.getElementById('timer').textContent = duration + ':00 (' + type + ')';
+    }
+
+    function startTimer() {
+        timer = setInterval(function() {
+            if (selectedTime <= 0) {
+                clearInterval(timer);
+                alert('Timer finished!');
+                return;
+            }
+            selectedTime--;
+            displayTimeLeft(selectedTime);
+        }, 1000);
+        startBtn.disabled = true;
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        selectedTime = 20 * 60; // Reset to default pomodoro duration
+        displayTimeLeft(selectedTime);
+        startBtn.disabled = false;
+    }
+
+    startBtn.addEventListener('click', startTimer);
+    resetBtn.addEventListener('click', resetTimer);
+</script>
+</body>
+</html>
