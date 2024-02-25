@@ -19,6 +19,7 @@
         .container {
             perspective: 1000px;
             position: relative;
+            text-align: center;
         }
         .card-container {
             width: 400px; 
@@ -27,6 +28,7 @@
             transform-style: preserve-3d;
             transition: transform 0.5s;
             cursor: pointer;
+            margin: 0 auto; 
         }
         .card-container.flipped {
             transform: rotateY(180deg);
@@ -52,7 +54,6 @@
         .arrow {
             position: absolute;
             top: 50%;
-
             transform: translateY(-50%);
             font-size: 32px; 
             cursor: pointer;
@@ -71,6 +72,67 @@
             transform: translateX(-50%);
             font-size: 18px;
             color: #666;
+        }
+        .mainbutton {
+            position: absolute;
+            top: 30px;
+        }
+
+        .modal-background {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px; 
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            border-radius: 10px;
+            position: relative; 
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+        }
+        .text-input {
+            width: calc(100% - 22px); 
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .submit-button {
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -91,21 +153,31 @@
             &#10095;
         </div>
         <div class="flashcard-count" id="flashcardCount">
-            Flashcard 1 of 3
+            1/3
+        </div>
+    </div>
+
+    <button class="mainbutton" onclick="openModal()">Upload from Quizlet</button>
+
+    <div id="popup" class="modal-background">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <textarea class="text-input" id="textInput" placeholder="Paste your text here..."></textarea>
+            <button onclick="submitText()">Submit</button>
         </div>
     </div>
 
     <script>
         let frontface = [
-            "front1",
-            "front2",
-            "front3",
+            "This is a test!",
+            "This is the second card!",
+            "Next, you should try importing a Quizlet set!",
         ];
 
         let backface = [
-            "back1",
-            "back2",
-            "back3",
+            "Answer!",
+            "Great job!",
+            "Just click the button above!",
         ];
 
         let currentCardIndex = 0;
@@ -118,6 +190,7 @@
             const frontCard = document.querySelector('.card.front');
             const backCard = document.querySelector('.card.back');
             frontCard.textContent = frontface[index];
+            backCard.textContent = backface[index];
             const flashcardCount = document.getElementById('flashcardCount');
             flashcardCount.textContent = `${index+1}/${frontface.length}`;
         }
@@ -140,7 +213,30 @@
             document.querySelector('.card-container').classList.remove('flipped');
         }
 
+        function openModal() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function submitText() {
+            var text = document.getElementById('textInput').value;
+            const quizletinput = text.trim().split("\n");
+            for (let i = 0; i < quizletinput.length; i++) {
+                console.log(quizletinput[i]);
+                const quizlet2 = (quizletinput[i]+"").split("\t");
+                frontface[i] = quizlet2[0];
+                backface[i] = quizlet2[1];
+            }
+            currentCardIndex = 0;
+            showCard(0);
+            closeModal();
+        }
+
         showCard(currentCardIndex);
+        
     </script>
 </body>
 </html>
