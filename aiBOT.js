@@ -1,34 +1,24 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { ChatGPT } = require('openai');
+function askQuestion() {
+    var question = document.getElementById('input').value;
+    if (question.trim() === '') return;
 
-const app = express();
-const port = 3000;
+    // Display user question in the chatbox
+    appendMessage('You', question);
 
-const chatGPT = new ChatGPT({
-    apiKey: 'your-api-key-here' // Replace 'your-api-key-here'
-});
-
-app.use(bodyParser.json());
-
-app.post('/ask', async (req, res) => {
-    const { question } = req.body;
-    
-    try {
-    
-        const response = await chatGPT.complete({
-            model: 'text-davinci-003', 
-            prompt: question,
-            maxTokens: 150
-        });
-
-        res.json({ answer: response.choices[0].text.trim() });
-    } catch (error) {
+    // Send question to backend server
+    fetch('/ask', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ question: question })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display answer from backend in the chatbox
+        appendMessage('Bot', data.answer);
+    })
+    .catch(error => {
         console.error('Error:', error);
-        res.status(500).json({ error: 'An error occurred while processing your request.' });
-    }
-});
-
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+    });
+}

@@ -3,105 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Buddy</title>
+<title>Study Chat</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f2f2f2;
-    }
-    .chat-container {
-        max-width: 500px;
-        margin: 50px auto;
-        background-color: #ffffff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-    }
-    .chat-header {
-        background-color: #ea71c4;
-        color: #fff;
+    /* CSS for chatbox */
+    #chatbox {
+        width: 300px;
+        height: 400px;
+        border: 1px solid #ccc;
+        overflow-y: scroll;
         padding: 10px;
-        text-align: center;
     }
-    .chat-messages {
-        padding: 10px;
-        overflow-y: auto;
-        max-height: 300px;
-    }
-    .user-message, .bot-message {
-        margin-bottom: 10px;
-    }
-    .user-message {
-        text-align: right;
-    }
-    .bot-message {
-        text-align: left;
-    }
-    .chat-input {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: none;
-        border-top: 1px solid #f2a9a9;
-        box-sizing: border-box;
-        font-size: 16px;
+    #input {
+        width: 100%;
+        padding: 5px;
     }
 </style>
 </head>
 <body>
-<div class="chat-container">
-    <div class="chat-header">Chat with your study buddy to quiz you</div>
-    <div class="chat-messages" id="chat-messages"></div>
-    <input type="text" class="chat-input" id="user-input" placeholder="Type a message...">
-</div>
+
+<div id="chatbox"></div>
+<input type="text" id="input" placeholder="Type your question here...">
+<button onclick="askQuestion()">Ask</button>
 
 <script>
-    const chatMessages = document.getElementById('chat-messages');
-    const userInput = document.getElementById('user-input');
+function askQuestion() {
+    var question = document.getElementById('input').value;
+    if (question.trim() === '') return;
 
-    function appendUserMessage(message) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'user-message';
-        messageDiv.textContent = message;
-        chatMessages.appendChild(messageDiv);
+    // Display user question in the chatbox
+    appendMessage('You', question);
+
+    // Process question and provide answer
+    var answer = getAnswer(question);
+
+    // Display answer in the chatbox
+    setTimeout(function() {
+        appendMessage('Bot', answer);
+    }, 500);
+}
+
+function appendMessage(sender, message) {
+    var chatbox = document.getElementById('chatbox');
+    var messageElement = document.createElement('div');
+    messageElement.textContent = sender + ': ' + message;
+    chatbox.appendChild(messageElement);
+    chatbox.scrollTop = chatbox.scrollHeight; // Auto scroll to bottom
+}
+
+function getAnswer(question) {
+    // Example: Pre-defined answers based on certain questions
+    switch (question.toLowerCase()) {
+        case 'what is the capital of France?':
+            return 'The capital of France is Paris.';
+        case 'how do I study effectively?':
+            return 'To study effectively, make a schedule, break tasks into smaller chunks, take regular breaks, and practice active learning techniques.';
+        default:
+            return 'I am sorry, I don\'t understand your question.';
     }
-
-    function appendBotMessage(message) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'bot-message';
-        messageDiv.textContent = message;
-        chatMessages.appendChild(messageDiv);
-    }
-
-    function processUserInput() {
-        const userInputText = userInput.value.trim();
-        if (userInputText !== '') {
-            appendUserMessage(userInputText);
-            fetch('/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question: userInputText })
-            })
-            .then(response => response.json())
-            .then(data => {
-                appendBotMessage(data.answer);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                appendBotMessage("Sorry, I couldn't process your request.");
-            });
-            userInput.value = '';
-        }
-    }
-
-    userInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            processUserInput();
-        }
-    });
+}
 </script>
+
 </body>
 </html>
