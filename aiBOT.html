@@ -7,9 +7,9 @@
 <style>
     /* CSS for chatbox */
     #chatbox {
-        width: 300px;
-        height: 400px;
-        border: 1px solid #ccc;
+        width: 400px;
+        height: 600px;
+        border: 1px solid #efc5c5;
         overflow-y: scroll;
         padding: 10px;
     }
@@ -20,25 +20,23 @@
 </style>
 </head>
 <body>
+    <h1>Chat with Catalyst</h1>
+    <p>Use our AI implemented by using openAI's source and using various things such as...</p>
 
 <div id="chatbox"></div>
 <input type="text" id="input" placeholder="Type your question here...">
-<button onclick="askQuestion()">Ask</button>
+<button onclick="askQuestion()">Ask!</button>
 
 <script>
 function askQuestion() {
     var question = document.getElementById('input').value;
     if (question.trim() === '') return;
 
-    // Display user question in the chatbox
     appendMessage('You', question);
-
-    // Process question and provide answer
     var answer = getAnswer(question);
 
-    // Display answer in the chatbox
     setTimeout(function() {
-        appendMessage('Bot', answer);
+        appendMessage('Catalyst', answer);
     }, 500);
 }
 
@@ -47,18 +45,17 @@ function appendMessage(sender, message) {
     var messageElement = document.createElement('div');
     messageElement.textContent = sender + ': ' + message;
     chatbox.appendChild(messageElement);
-    chatbox.scrollTop = chatbox.scrollHeight; // Auto scroll to bottom
+    chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 function getAnswer(question) {
-    // Example: Pre-defined answers based on certain questions
     switch (question.toLowerCase()) {
         case 'what is the capital of France?':
             return 'The capital of France is Paris.';
         case 'how do I study effectively?':
             return 'To study effectively, make a schedule, break tasks into smaller chunks, take regular breaks, and practice active learning techniques.';
         default:
-            return 'I am sorry, I don\'t understand your question.';
+            return 'I am sorry, I dont understand your question.';
     }
 }
 </script>
